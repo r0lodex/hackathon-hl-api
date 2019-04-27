@@ -14,12 +14,10 @@ class SalaryController extends Controller
      */
     public function index()
     {
-        return [
-            'data' => [
-                'gg' => 'tt',
-                'haha' => 'kk'
-            ],
-        ];
+        return response()->json([
+            'message' => 'Great success! New task created',
+            'task' => '$task'
+        ]);
     }
 
     /**
