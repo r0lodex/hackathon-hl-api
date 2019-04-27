@@ -42,12 +42,23 @@ class SalaryController extends Controller
 
     public function statement(Request $request)
     {
-        $users = DB::table('users_hack')->orderBy('id', 'desc')->get()->take(1);
+        $users = DB::table('users_hack')->orderBy('id', 'desc')->first();
         $users_cc = DB::table('users_cc')->get();
 
         return response()->json([
             'users' => $users,
             'users_cc' => $users_cc
         ]);
+    }
+
+    public function sync(Request $request)
+    {
+        $payday_date = DB::table('users_hack')->orderBy('id', 'desc')->value('payday_date');
+        $getID = DB::table('users_cc')->get(['id'])->toArray();
+
+        $id = [];
+        foreach
+
+        $sync = DB::table('users_cc')->where('cc_type', 'visa')->orWhere('cc_type', 'master')->update(['due_date' => $payday_date]);
     }
 }
