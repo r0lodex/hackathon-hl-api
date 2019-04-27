@@ -16,4 +16,4 @@ Route::get('/', function () {
 });
 
 
-Route::get('/sync', 'SalaryController@sync');
+Route::get('/summary', 'SalaryController@summary');
