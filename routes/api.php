@@ -19,3 +19,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('/salary', 'SalaryController@index');
 Route::post('/salary', 'SalaryController@store');
+Route::get('/statement', 'SalaryController@statement');
+Route::put('/sync', 'SalaryController@sync');

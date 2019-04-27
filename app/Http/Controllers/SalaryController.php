@@ -8,16 +8,10 @@ use DB;
 
 class SalaryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         return response()->json([
-            'message' => 'Great success! New task created',
-            'task' => '$task'
+            'message' => 'Hackathon-API-v1-stable'
         ]);
     }
 
@@ -43,6 +37,17 @@ class SalaryController extends Controller
             'status' => $status,
             'salary_amount' => $salary_amount,
             'payday_date' => $payday_date
+        ]);
+    }
+
+    public function statement(Request $request)
+    {
+        $users = DB::table('users_hack')->orderBy('id', 'desc')->get()->take(1);
+        $users_cc = DB::table('users_cc')->get();
+
+        return response()->json([
+            'users' => $users,
+            'users_cc' => $users_cc
         ]);
     }
 }
