@@ -40,7 +40,26 @@ class SalaryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // $request->validate([
+        //     'title' => 'required'
+        // ]);
+        //$bodyContent = $request->getContent();
+        //$name = $request->input('dd');
+        //dd($request->all());
+        //dd($name);
+
+        //return $name;
+
+        $request->validate([
+            'title' => 'required',
+        ]);
+
+        $task = Task::create($request->all());
+
+        return response()->json([
+            'message' => 'Great success! New task created',
+            'task' => $task
+        ]);
     }
 
     /**
