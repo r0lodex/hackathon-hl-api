@@ -54,10 +54,14 @@ class SalaryController extends Controller
     public function sync(Request $request)
     {
         $payday_date = DB::table('users_hack')->orderBy('id', 'desc')->value('payday_date');
-        $getID = DB::table('users_cc')->get(['id'])->toArray();
+        $getIDs = DB::table('users_cc')->get(['id'])->toArray();
 
-        $id = [];
-        foreach
+        $ids = [];
+        foreach($getIDs as $getID) {
+            $ids[] = $getID;
+        }
+
+        echo $ids; exit;
 
         $sync = DB::table('users_cc')->where('cc_type', 'visa')->orWhere('cc_type', 'master')->update(['due_date' => $payday_date]);
     }
