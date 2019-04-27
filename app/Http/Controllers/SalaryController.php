@@ -43,7 +43,12 @@ class SalaryController extends Controller
         // ]);
         //$bodyContent = $request->getContent();
         //$name = $request->input('dd');
-        //dd($request->all());
+        $a = $request->data;
+
+        foreach ($a as $key) {
+            echo $key;
+        }
+        exit;
         //dd($name);
 
         //return $name;
