@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Salary;
 use Illuminate\Http\Request;
+use DB;
 
 class SalaryController extends Controller
 {
@@ -20,93 +21,28 @@ class SalaryController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        // $request->validate([
-        //     'title' => 'required'
-        // ]);
-        //$bodyContent = $request->getContent();
-        //$name = $request->input('dd');
-        $a = $request->data;
-
-        foreach ($a as $key) {
-            echo $key;
-        }
-        exit;
-        //dd($name);
-
-        //return $name;
-
         $request->validate([
-            'title' => 'required',
+            'salary_amount' => 'required',
+            'payday_date' => 'required'
         ]);
 
-        $task = Task::create($request->all());
+        $salary_amount = $request->salary_amount;
+        $payday_date = $request->payday_date;
+        $status = true;
 
+        $query = DB::table('users_hack')->insert([
+            'name' => 'Mohd Rakuten', 
+            'payday_date' => $payday_date,
+            'salary_amount' => $salary_amount
+        ]);
+        
         return response()->json([
-            'message' => 'Great success! New task created',
-            'task' => $task
+            'message' => 'Success!',
+            'status' => $status,
+            'salary_amount' => $salary_amount,
+            'payday_date' => $payday_date
         ]);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Salary  $salary
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Salary $salary)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Salary  $salary
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Salary $salary)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Salary  $salary
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Salary $salary)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Salary  $salary
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Salary $salary)
-    {
-        //
     }
 }

@@ -18,4 +18,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/salary', 'SalaryController@index');
-Route::post('/salary', 'SalaryController@store')->name('salary');
+Route::post('/salary', 'SalaryController@store');
