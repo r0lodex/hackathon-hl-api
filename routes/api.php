@@ -21,3 +21,4 @@ Route::get('/salary', 'SalaryController@index');
 Route::post('/salary', 'SalaryController@store');
 Route::get('/statement', 'SalaryController@statement');
 Route::put('/sync', 'SalaryController@sync');
+Route::post('/commit', 'SalaryController@commit');

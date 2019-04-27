@@ -63,4 +63,26 @@ class SalaryController extends Controller
             'users_cc' => $users_cc
         ]);
     }
+
+    public function commit(Request $request)
+    {
+        $request->validate([
+            'monthly_deduction_amount' => 'required'
+        ]);
+
+        $monthly_deduction_amount = $request->monthly_deduction_amount;
+
+        $balance = 2000;
+
+        $deduct = DB::table('virtual_account')->insert([
+            'balance' => $balance, 
+            'monthly_deduction_amount' => $monthly_deduction_amount
+        ]);
+        
+        return response()->json([
+            'message' => 'Success!',
+            'balance' => $balance,
+            'monthly_deduction_amount' => $monthly_deduction_amount
+        ]);
+    }
 }
