@@ -14,7 +14,12 @@ class SalaryController extends Controller
      */
     public function index()
     {
-        
+        return [
+            'data' => [
+                'gg' => 'tt',
+                'haha' => 'kk'
+            ],
+        ];
     }
 
     /**
