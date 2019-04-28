@@ -72,7 +72,7 @@ class SalaryController extends Controller
 
         $monthly_deduction_amount = $request->monthly_deduction_amount;
 
-        $balance = 2000;
+        $balance = 500;
 
         $deduct = DB::table('virtual_account')->insert([
             'balance' => $balance, 
