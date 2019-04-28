@@ -91,7 +91,7 @@ class SalaryController extends Controller
         $salary = DB::table('users_hack')->select('salary_amount')->orderBy('id', 'desc')->first();
         $card_summary = DB::table('users_cc')->get();
         $monthly_min_payment = DB::table('users_cc')->select(DB::raw('SUM(min_payment_amount) AS total'))->value('total');
-        $virtual_account = DB::table('virtual_account')->get();
+        $virtual_account = DB::table('virtual_account')->orderBy('id', 'desc')->first();
 
         return response()->json([
             'salary' => $salary,
